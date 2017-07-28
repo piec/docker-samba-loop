@@ -11,7 +11,9 @@ docker run -it --rm --name samba -p 139:139 -p 445:445 -v $PWD/exports:/share dp
 Run client in a loop:
 ```
 while true; do
+    date
     docker run -it --rm --name client-smb --cap-add=SYS_ADMIN --cap-add DAC_READ_SEARCH --link samba:samba client-smb:1
+    date
     sleep 1
 done
 ```
